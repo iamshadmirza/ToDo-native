@@ -33,6 +33,11 @@ export default class App extends React.Component {
       todo
     });
   }
+  onToggle(){
+    store.dispatch({
+      type: 'TOGGLE_STATE',
+    });
+  }
   renderScene(route, nav){
     switch(route.name){
       case 'taskform': 
@@ -40,9 +45,11 @@ export default class App extends React.Component {
       default:
         return (
           <TaskList 
+            filter={this.state.filter}
             onAddStarted={this.onAddStarted.bind(this)}
             onDone={this.onDone.bind(this)}
             todos={this.state.todos}
+            onToggle={this.onToggle.bind(this)}
           />
         );
     }
