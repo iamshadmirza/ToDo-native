@@ -10,7 +10,9 @@
     "react": "16.6.1",
     "react-native": "0.57.5",
     "react-native-deprecated-custom-component": "^0.1.2",
-    "react-native-swipeout": "^2.3.6"
+    "react-native-swipeout": "^2.3.6",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

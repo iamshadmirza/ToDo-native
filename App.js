@@ -2,19 +2,15 @@ import React from 'react';
 import {Navigator} from 'react-native-deprecated-custom-component';
 import TaskList from './TaskList';
 import TaskForm from './TaskForm';
+import store from './todoStore';
 export default class App extends React.Component {
   constructor(props, context){
     super(props, context);
-    this.state={
-      todos: [
-        {
-          task: 'Learn react-native'
-        },
-        {
-          task: 'Learn redux'
-        },
-      ],
-    };
+    this.state= store.getState();
+    console.log(this.state);
+    store.subscribe(() => {
+      this.setState(store.getState());
+    });
   }
   onAddStarted(){
     this.nav.push({
@@ -22,8 +18,10 @@ export default class App extends React.Component {
     });
   }
   onAdd(task){
-    this.state.todos.push({task});
-    this.setState({ todos: this.state.todos});
+    store.dispatch({
+      type: 'ADD_TODO',
+      payload: task
+    });
     this.nav.pop();
   }
   onCancel(){
