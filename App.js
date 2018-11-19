@@ -28,11 +28,10 @@ export default class App extends React.Component {
     this.nav.pop();
   }
   onDone(todo){
-    const filteredTodos = this.state.todos.filter((filterTodo) => {
-      return filterTodo !== todo;
+    store.dispatch({
+      type: 'DONE_TODO',
+      todo
     });
-    this.setState({todos: filteredTodos});
-
   }
   renderScene(route, nav){
     switch(route.name){
